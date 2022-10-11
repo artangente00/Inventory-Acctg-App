@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="920" pageHeight="612" orientation="Landscape" columnWidth="908" leftMargin="6" rightMargin="6" topMargin="6" bottomMargin="6" uuid="2dd5632f-66a6-491b-b70f-e3b9c00f62ed">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="storelocation" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="startdt" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="enddt" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     withdrawal.`ItemCode` AS withdrawal_ItemCode,
+     withdrawal.`StockOnhand` AS withdrawal_StockOnhand,
+     withdrawal.`UOM` AS withdrawal_UOM,
+     withdrawal.`Cost` AS withdrawal_Cost,
+     withdrawal.`Description` AS withdrawal_Description,
+     withdrawal.`StoredLocation` AS withdrawal_StoredLocation,
+     withdrawal.`GLAccount` AS withdrawal_GLAccount,
+     withdrawal.`Purpose` AS withdrawal_Purpose,
+     withdrawal.`Department` AS withdrawal_Department,
+     withdrawal.`MRIS` AS withdrawal_MRIS,
+     withdrawal.`Custodian` AS withdrawal_Custodian,
+     withdrawal.`WithdrawQty` AS withdrawal_WithdrawQty,
+     withdrawal.`RemainingQty` AS withdrawal_RemainingQty,
+     withdrawal.`TotalAmnt` AS withdrawal_TotalAmnt,
+     withdrawal.`Date` AS withdrawal_Date,
+     withdrawal.`ReceiptNo` AS withdrawal_ReceiptNo,
+     withdrawal.`PONumber` AS withdrawal_PONumber,
+     withdrawal.`BBalance` AS withdrawal_BBalance,
+     withdrawal.`ReceiveDate` AS withdrawal_ReceiveDate
+FROM
+     `withdrawal` withdrawal WHERE withdrawal.`StoredLocation`=$P{storelocation} AND withdrawal.`Date` BETWEEN $P{startdt} and $P{enddt}]]>
+	</queryString>
+	<field name="withdrawal_ItemCode" class="java.lang.String"/>
+	<field name="withdrawal_StockOnhand" class="java.lang.String"/>
+	<field name="withdrawal_UOM" class="java.lang.String"/>
+	<field name="withdrawal_Cost" class="java.lang.String"/>
+	<field name="withdrawal_Description" class="java.lang.String"/>
+	<field name="withdrawal_StoredLocation" class="java.lang.String"/>
+	<field name="withdrawal_GLAccount" class="java.lang.String"/>
+	<field name="withdrawal_Purpose" class="java.lang.String"/>
+	<field name="withdrawal_Department" class="java.lang.String"/>
+	<field name="withdrawal_MRIS" class="java.lang.String"/>
+	<field name="withdrawal_Custodian" class="java.lang.String"/>
+	<field name="withdrawal_WithdrawQty" class="java.lang.String"/>
+	<field name="withdrawal_RemainingQty" class="java.lang.String"/>
+	<field name="withdrawal_TotalAmnt" class="java.lang.Double"/>
+	<field name="withdrawal_Date" class="java.lang.String"/>
+	<field name="withdrawal_ReceiptNo" class="java.lang.String"/>
+	<field name="withdrawal_PONumber" class="java.lang.String"/>
+	<field name="withdrawal_BBalance" class="java.lang.String"/>
+	<field name="withdrawal_ReceiveDate" class="java.lang.String"/>
+	<variable name="totalamnt" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{withdrawal_TotalAmnt}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<textField>
+				<reportElement x="341" y="53" width="110" height="20" uuid="c366ff80-eac3-484d-84b2-7c3de77ffcc5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{startdt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="481" y="53" width="101" height="20" uuid="e31b00bc-f093-420a-9dce-761844cf76bd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{enddt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="73" width="271" height="20" uuid="5247717c-a756-44b5-9ff6-45d31848d8d9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{storelocation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="311" y="0" width="271" height="53" uuid="3116d32c-4c17-4dba-92f3-06123cc72e30"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[
+       HDJ BAYAWAN AGRI-VENTURE CORPORATION
+                   SUGAR DIVISION TOLONG
+      CARANOCHE,STA. CATALINA NEGROS ORIENTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="53" width="30" height="20" uuid="822b35d2-814f-44c3-bcf4-c94eaf39663d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Start :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="53" width="30" height="20" uuid="6703b89e-aa00-4814-8351-c8b21e431fe8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[End :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="13" width="53" height="20" uuid="7b96f596-99f4-4bb5-81b4-c2be9d5df341"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ItemCode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="13" width="54" height="20" uuid="8f6d8d9c-f710-4c52-afd7-e50bd0a7ed03"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[P.O #:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="13" width="100" height="20" uuid="7baee4c0-fd98-4291-bf10-e6de71c7bfd7"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="2" width="42" height="31" uuid="4fb1e32e-21fe-4cea-a1b4-22315e2246de"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Stock Onhand]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="13" width="36" height="20" uuid="027e52d2-57f4-4363-ab1d-bab754c8b4a2"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[UOM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="13" width="35" height="20" uuid="65577989-ae3b-45d3-b50f-303b2170912c"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="13" width="47" height="20" uuid="0b6de302-7090-4e07-9f7f-d0e3600646c9"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[DPRT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="13" width="98" height="20" uuid="9d4a7931-dab3-4dfc-8973-10688923c35b"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[StoredLocation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="13" width="77" height="20" uuid="64ddd499-d4a2-4670-b4a8-df9c6d896588"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Date Withdraw]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="542" y="2" width="30" height="31" uuid="745e8450-08b0-4523-ae55-36859ffb0336"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Draw Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="572" y="2" width="40" height="31" uuid="c8390ba8-2c0f-47f0-8938-9e6e6e22a095"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Remain Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="612" y="2" width="39" height="31" uuid="c9e1048a-afc7-4239-8084-a0b33ec051d2"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Total Amnt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="651" y="13" width="58" height="20" uuid="83bb9d50-3614-45ef-b584-f1473b2ec58a"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[MRIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="709" y="13" width="65" height="20" uuid="97ecf304-2478-4d3f-8b12-a1f5db9dea68"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[GLAccount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="774" y="13" width="74" height="20" uuid="9eed5c0c-7ad2-4e59-bb94-9e2781a9905e"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Purpose]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="848" y="13" width="60" height="20" uuid="dce66259-5905-41b2-9f1b-e3aad65cf939"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Custodian]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="29" width="908" height="1" uuid="c8c4ae7a-eca3-45cf-a906-b68d283550f5"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="47" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="50" height="47" uuid="fffaf1b3-b980-4fa9-988b-52d80e8c361f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_ItemCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="0" width="51" height="47" uuid="31821f0d-0477-43e9-8cdb-95228362183e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_PONumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="107" y="0" width="97" height="47" uuid="a4a63007-f5d7-4daf-b5ba-7373bdf0677e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_Description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="0" width="39" height="47" forecolor="#000000" uuid="3d1379aa-ffe0-418e-a38c-c193f9cb042f"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_StockOnhand}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="249" y="0" width="33" height="47" uuid="a61d15cf-d112-46da-afc1-591803a3ebf8"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_UOM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="0" width="32" height="47" uuid="4b78ae5a-8af1-4a61-aa0c-217430be506e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_Cost}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="44" height="47" uuid="3edbd9e6-9676-4bb4-aa55-672cd50410bc"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_Department}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="0" width="94" height="47" uuid="c8978fe7-a195-469c-9f90-730071d8cc02"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_StoredLocation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="465" y="0" width="73" height="47" uuid="109cbd7f-2341-490c-afc7-f43afe41cdd5"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="542" y="0" width="26" height="47" forecolor="#000000" uuid="d4634f2c-4649-41fc-a7db-106d20c3ae70"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_WithdrawQty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="572" y="0" width="37" height="47" forecolor="#000000" uuid="da396e4e-fe83-4e46-a3b6-509b6c3c5248"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_RemainingQty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="612" y="0" width="37" height="47" uuid="f14a8f11-715c-4e29-b9b0-e440089cca79"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_TotalAmnt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="651" y="0" width="55" height="47" uuid="ab80570d-e4ae-443e-bb05-e9e2b17299f3"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_MRIS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="709" y="0" width="60" height="47" uuid="209f9366-9c65-4405-9a4a-2b09ea8a7757"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_GLAccount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="774" y="0" width="74" height="47" uuid="3b0dd7b7-b36d-4fa4-a871-1b3e6c40b31a"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_Purpose}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="848" y="0" width="60" height="47" uuid="c495b5f5-ee08-4a90-bde3-bc771aad1112"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{withdrawal_Custodian}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="788" y="0" width="80" height="20" uuid="dde76fe0-faf8-46e4-b623-83a6e59ba6c4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="868" y="0" width="40" height="20" uuid="d38b24ea-3843-4b27-b148-2c791dd5a7cc"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="88" height="20" uuid="202dfac5-c59f-426c-85a2-58f355b67b67"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount :]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
+				<reportElement x="88" y="0" width="119" height="20" uuid="37ab8d5c-6465-4914-ae16-d72d0097e481"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalamnt}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
